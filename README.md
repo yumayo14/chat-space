@@ -17,16 +17,9 @@
 ## usersテーブル
 |Column| Type|Options|
 |------|-----|-------|
-|name    |string |null: false|
-|email   |string |null: false|
-|paswword|integer|null: false|
-
-
-###
--テーブル作成後[rails g migration]コマンドを用いて、以下を記述
- add_index :users, :name, unique: true
- add_index :users, :email, unique: true
- add_index :users, :password, unique: true
+|name    |string |null: false, add_index :users, :name, unique: true|
+|email   |string |null: false, add_index :users, :email, unique: true|
+|paswword|integer|null: false, add_index :users, :password, unique: true|
 
 
 ### Association
