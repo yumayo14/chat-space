@@ -1,0 +1,10 @@
+html, body {
+  height: 100%;
+  .flash {
+    @include flash;
+    .flash-comment {
+    @include flash-comment;
+    }
+  }
+}
+
