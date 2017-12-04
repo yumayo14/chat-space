@@ -1,0 +1,50 @@
+html, body{
+  height: 100%;
+  .contents{
+    padding-top: 23px;
+    @include flex-box;
+    box-sizing: border-box;
+    .left-contents {
+      width: 300px;
+      height: 100%;
+      background-color: #2f3e51;
+      .user {
+        @include left-side-position(25px,20px, 15px,);
+        height: 10%;
+        background-color: #253141;
+        &__name {
+          color: $text;
+          font-size: $base_font;
+          float: left
+        }
+        &__icon {
+            left: 100px;
+            position: relative;
+            &__mark{
+              float: left;
+              padding: 0 5px;
+              i{
+                color: $text;
+                font-size: ($base_font + 5);
+              }
+            }
+          }
+      }
+      .group{
+        @include left-side-position(20px, 20px, 40px,);
+        &__name {
+        @include left-side-position(5px, 0, 5px,);
+        color: $text;
+        font-size: ($base_font - 1);
+        }
+        &__info {
+          @include left-side-position(5px, 5px, 5px,);
+          color: $text;
+          font-size: ($base_font - 5);
+        }
+      }
+    }
+  }
+}
+
+
