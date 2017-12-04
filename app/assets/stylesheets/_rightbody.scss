@@ -1,0 +1,61 @@
+html, body{
+  height: 100%;
+  .contents{
+    padding-top: 23px;
+    @include flex-box;
+    box-sizing: border-box;
+    .right-contents {
+      width: calc(100% - 300px);
+      height: 100vh;
+      box-sizing: border-box;
+      background-color: #DDDDDD;
+      border-bottom:5px solid #eeeeee;
+      .main-group {
+        height: 10%;
+        @include right-side-position(25px,40px, 15px);
+        background-color: #FFFFFF;
+        float:left;
+        &__name {
+          @include black-font(20px);
+          @include right-side-position(0, 0, 15px);
+          float:left;
+        }
+        &__member {
+          @include gray-font(12px);
+          float:left;
+        }
+        &__edit {
+            @include button
+          }
+      }
+      .chatspace{
+        height: 100%;
+        @include right-side-position(25px, 40px, 0);
+        box-sizing: border-box;
+        position: relative;
+        .chatspace-log{
+          @include right-side-position(46px,0, 10px);
+          float: left;
+          &__member {
+            @include black-font(16px);
+            float: left;
+            padding-right: 15px;
+          }
+          &__post-time {
+            @include gray-font(12px);
+            float: left;
+          }
+        }
+        .chatspace-text {
+          clear:both;
+          @include right-side-position(10px,0, 40px);
+          &__chat {
+            @include black-font(14px);
+        }
+      }
+    }
+  }
+}
+}
+
+
