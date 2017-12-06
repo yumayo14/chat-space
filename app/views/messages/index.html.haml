@@ -35,6 +35,6 @@
       = form_for "" do |f|
         = f.text_field "", class: "form-box__text-field", placeholder: "Type a text"
         %label.form-box__picture-set
-          = f.file_field "", :class => "form-box__picture-set__field"
+          = f.file_field "", class: "form-box__picture-set__field"
           %i.fa.fa-file-picture-o.fa-fw
-        = f.submit :value => "Send", class: "form-box__button"
+        = f.submit value: "Send", class: "form-box__button"
