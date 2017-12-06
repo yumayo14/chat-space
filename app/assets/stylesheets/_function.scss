@@ -1,0 +1,68 @@
+// topbpdyの関数
+@mixin flash{
+  width: 100%;
+  background-color: #38AEF0;
+  position: fixed;
+}
+
+@mixin flash-comment{
+  color: #DDDDDD;
+  font-size: 16px;
+  text-align: center;
+}
+
+
+// 配置設定の際に利用する
+@mixin flex-box {
+  height: 100vh;
+  display: -webkit-flex;
+  display: flex;
+}
+
+// _leftbody.scssに当てている関数
+
+@mixin left-side-position($top, $right_left, $bottom ){
+  padding: $top $right_left $bottom ;
+}
+
+// _rightbody.cssに当てている関数
+
+@mixin right-side-position($top, $right, $bottom, $left ){
+  padding: $top $right $bottom $left ;
+}
+
+@mixin black-font($size) {
+  color: #333333;
+  font-size: $size;
+}
+
+@mixin gray-font($size) {
+  color: #999999;
+  font-size: $size;
+}
+
+@mixin icon-position($top, $right, $left, $bottom) {
+  position: absolute;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left
+}
+
+@mixin form-position($top, $right, $left, $bottom) {
+  position: absolute;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left
+}
+
+.button {
+    font-size:18px;
+    text-decoration:none;
+    text-align:center;
+    line-height: 40px;
+    padding:0 20px;
+    position: absolute;
+    right: 40px;
+}

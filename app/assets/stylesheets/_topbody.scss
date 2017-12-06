@@ -1,0 +1,8 @@
+  .flash {
+    @include flash;
+    .flash-comment {
+    @include flash-comment;
+    }
+  }
+
+
