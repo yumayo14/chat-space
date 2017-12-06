@@ -1,49 +1,43 @@
-%header.flash
-  %p.flash-comment チャットグループが作成されました。
-.contents
-  .left-contents
-    .user
-      %p.user__name name
-      %ul.user__icon
-        %li.user__icon__mark
-          = link_to root_path do
-            %i.fa.fa-edit
-        %li.user__icon__mark
-          = link_to root_path do
-            %i.fa.fa-cog
-    .group
-      %p.group__name Oh yeah!!
-      %p.group__info よろしくお願いします
-    .group
-      %p.group__name an an
-      %p.group__info よろしくお願いします
-
-  .right-contents
-    .main-group
-      %p.main-group__name sampleグループ
-      %p.main-group__member Members: ryousuke maehira
-      = link_to root_path do
-        %btn.main-group__edit Edit
-    .chatspace
-      %ul.chatspace-log
-        %li.chatspace-log__member ryousukemaehira
-        %li.chatspace-log__post-time 2016/10/02 06:27:07
-      .chatspace-text
-        %p.chatspace-text__chat なるほど
-      %ul.chatspace-log
-        %li.chatspace-log__member ryousukemaehira
-        %li.chatspace-log__post-time 2016/10/02 06:27:07
-      %ul.chatspace-text
-        %li.chatspace-text__chat なるほど
-      %footer.form-box
-        %textarea.form-box__post
-        %ul.form-list
-          %li.form-list
-          = link_to root_path do
-            %i.fa.fa-file-picture-o
-          %li.form-list
-          = link_to root_path do
-            %btn.form-list__button Send
+.flash
+  .flash-comment チャットグループが作成されました
+.left-contents
+  .user
+    %p.user__name name
+    .user__icon
+      .user__icon__mark
+        = link_to root_path do
+          %i.fa.fa-edit
+      .user__icon__mark
+        = link_to root_path do
+          %i.fa.fa-cog
+  .group
+    %p.group__name Oh yeah!!
+    %p.group__info よろしくお願いします
+  .group
+    %p.group__name an an
+    %p.group__info よろしくお願いします
+.right-contents
+  .main-group
+    %h3.main-group__name sampleグループ
+    %h3.main-group__member Members: ryousuke maehira
+    = link_to root_path do
+      .main-group__edit Edit
+  .chatspace
+    .chatspace-content
+      .chatspace-content__member ryousukemaehira
+      .chatspace-content__post-time 2016/10/02 06:27:07
+      .chatspace-content__chat なるほど
+    .chatspace-content
+      .chatspace-content__member ryousukemaehira
+      .chatspace-content__post-time 2016/10/02 06:27:07
+      .chatspace-content__chat なるほど
+    %footer.form-box
+      = form_for "" do |f|
+        = f.text_field "", :class => "form-box__text-field", :placeholder => "Type a text"
+        %label.form-box__picture-set
+          = f.file_field "", :class => "form-box__picture-set__field"
+          %i.fa.fa-file-picture-o.fa-fw
+        = f.submit :value => "Send", :class => "form-box__button"
 
 
 
