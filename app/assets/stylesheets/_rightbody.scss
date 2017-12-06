@@ -1,61 +1,55 @@
-html, body{
-  height: 100%;
-  .contents{
-    padding-top: 23px;
-    @include flex-box;
+.right-contents {
+  padding-top: 20px;
+  float: left;
+  width: calc(100% - 300px);
+  height: 100vh;;
+  .main-group {
+    height: 15%;
     box-sizing: border-box;
-    .right-contents {
-      width: calc(100% - 300px);
-      height: 100vh;
-      box-sizing: border-box;
-      background-color: #DDDDDD;
-      border-bottom:5px solid #eeeeee;
-      .main-group {
-        height: 10%;
-        @include right-side-position(25px,40px, 15px);
-        background-color: #FFFFFF;
-        float:left;
-        &__name {
-          @include black-font(20px);
-          @include right-side-position(0, 0, 15px);
-          float:left;
-        }
-        &__member {
-          @include gray-font(12px);
-          float:left;
-        }
-        &__edit {
-            @include button
-          }
+    border-bottom:1px solid #DDDDDD;
+    @include right-side-position(35px,40px, 0, 40px);
+    background-color: #FFFFFF;
+    &__name {
+      @include black-font(20px);
+      padding-bottom: 15px;
+      font-weight: bold;
+    }
+    &__member {
+      @include gray-font(12px);
+    }
+    &__edit {
+        @extend .button;
+        background-color: $white;
+        color: $light-blue;
+        border:solid$light-blue;
+        position: absolute;
+        top: 30px;
       }
-      .chatspace{
-        height: 100%;
-        @include right-side-position(25px, 40px, 0);
-        box-sizing: border-box;
-        position: relative;
-        .chatspace-log{
-          @include right-side-position(46px,0, 10px);
-          float: left;
-          &__member {
-            @include black-font(16px);
-            float: left;
-            padding-right: 15px;
-          }
-          &__post-time {
-            @include gray-font(12px);
-            float: left;
-          }
-        }
-        .chatspace-text {
-          clear:both;
-          @include right-side-position(10px,0, 40px);
-          &__chat {
-            @include black-font(14px);
-        }
+  }
+  .chatspace{
+    height: 85%;
+    width: 100vh;
+    box-sizing: border-box;
+    .chatspace-content{
+      @include right-side-position(46px, 40px, 15px, 40px);
+      &__member {
+        @include black-font(16px);
+        float: left;
+        font-weight: bold;
+        padding-right: 15px;
+      }
+      &__post-time {
+        @include gray-font(12px);
+        float: left;
+      }
+      &__chat {
+        @include black-font(14px);
+        clear: both;
+        @include right-side-position(10px,15px, 40px, 15px);
       }
     }
   }
 }
-}
+
 
 
