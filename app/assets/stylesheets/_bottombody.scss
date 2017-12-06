@@ -5,8 +5,8 @@ form {
 }
 
 .form-box {
+  width:$right-width;
   height: 90px;
-  width: calc(100% - 300px);
   bottom: 0;
   position: absolute;
   background-color: #DDDDDD;

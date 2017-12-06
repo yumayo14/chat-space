@@ -1,7 +1,7 @@
 .right-contents {
   padding-top: 20px;
   float: left;
-  @include right-box-width;
+  width: $right-width;
   height: 100vh;
   .main-group {
     height: 15%;

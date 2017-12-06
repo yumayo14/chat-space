@@ -41,12 +41,6 @@
   font-size: $size;
 }
 
-@mixin new-area {
-    resize: vertical;
-    overflow: auto;
-    height: 100px;
-}
-
 @mixin icon-position($top, $right, $left, $bottom) {
   position: absolute;
   top: $top;
@@ -61,11 +55,6 @@
   right: $right;
   bottom: $bottom;
   left: $left
-}
-
-@mixin bottom-side-position($top, $right, $left, $bottom ){
-  width: 100%;
-  padding: $top, $right, $left, $bottom ;
 }
 
 .button {
