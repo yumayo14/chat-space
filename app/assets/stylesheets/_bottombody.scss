@@ -1,15 +1,13 @@
-
-form {
-  clear: both;
-  @include form-position(20px, 20px, 20px, 20px);
-}
-
 .form-box {
   width:$right-width;
   height: 90px;
   bottom: 0;
   position: absolute;
   background-color: #DDDDDD;
+  form {
+  clear: both;
+  @include form-position(20px, 20px, 20px, 20px);
+  }
   &__text-field {
     height: 50px;
     width: 81%;
