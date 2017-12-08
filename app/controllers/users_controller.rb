@@ -4,8 +4,10 @@ class UsersController < ApplicationController
   end
 
   def update
-    current_user.update(account_params)
-    redirect_to controller: :messages, action: :index
+    if current_user.update(account_params)
+      redirect_to controller: :messages, action: :index
+    else
+      render :edit
   end
 
 private
