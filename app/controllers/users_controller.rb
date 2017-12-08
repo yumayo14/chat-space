@@ -8,9 +8,10 @@ class UsersController < ApplicationController
       redirect_to controller: :messages, action: :index
     else
       render :edit
+    end
   end
 
-private
+  private
 
   def account_params
     params.permit(:name, :email)
