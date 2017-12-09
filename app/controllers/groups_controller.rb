@@ -2,11 +2,11 @@ class GroupsController < ApplicationController
   before_action :set_group, only: :edit
 
   def new
-    @group = current_user.groups.new
+    @group = Group.new
   end
 
   def create
-    @group = current_user.groups.new(group_params)
+    @group = Group.new(group_params)
     if @group.save
      redirect_to root_path, notice: "グループが作成されました"
     else
