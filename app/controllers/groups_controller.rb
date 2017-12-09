@@ -1,8 +1,8 @@
 class GroupsController < ApplicationController
-  before_action :set_group, only: :edit
+  before_action :set_group, only: [:edit, :update]
 
   def index
-    @groups = Group.all.order('id DESC')
+    @groups = current_user.groups.all.order('id DESC')
   end
 
   def new
@@ -22,6 +22,11 @@ class GroupsController < ApplicationController
   end
 
   def update
+    if @group.update(group_params)
+      redirect_to root_path, notice: "グループ更新成功"
+    else
+      render :edit
+    end
   end
 
 private
