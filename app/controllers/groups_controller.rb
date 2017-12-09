@@ -1,6 +1,10 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: :edit
 
+  def index
+    @groups = Group.all.order('id DESC')
+  end
+
   def new
     @group = Group.new
   end
