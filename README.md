@@ -5,13 +5,13 @@
 |------|----|-------|
 |text|text|なし|
 |image|string |なし|
-|member_id|integer|foreign_key: true|
-|group_id |integer|foreign_key: true|
+|user|references|foreign_key: true|
+|group |references|foreign_key: true|
 
 
 ### Association
 - belongs_to :user
-- belongs_to :groupe
+- belongs_to :group
 
 
 ## usersテーブル
@@ -25,21 +25,21 @@
 ### Association
 - has_many :messages
 - has_many :group_members
-- has_many :groupes, through: :group_members
+- has_many :groups, through: :group_members
 
 
 ## group_membersテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
-|group_id|integer|null: false, foreign_key: true|
+|user|references|foreign_key: true|
+|group|references|foreign_key: true|
 
 ### Association
 - belongs_to :group
 - belongs_to :user
 
-## groupesテーブル
+## groupsテーブル
 |Column| Type|Options|
 |------|-----|-------|
 |name|string|null: false|
