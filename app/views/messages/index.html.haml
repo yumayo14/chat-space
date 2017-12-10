@@ -31,9 +31,9 @@
       .chatspace-content__post-time 2016/10/02 06:27:07
       .chatspace-content__chat なるほど
     %footer.form-box
-      = form_for "" do |f|
-        = f.text_field "", class: "form-box__text-field", placeholder: "Type a text"
+      = form_for ( [@group, @message] ), url: {action: :create} do |f|
+        = f.text_field :text, class: "form-box__text-field", placeholder: "Type a text"
         %label.form-box__picture-set
-          = f.file_field "", class: "form-box__picture-set__field"
+          = f.file_field :image, class: "form-box__picture-set__field"
           %i.fa.fa-file-picture-o.fa-fw
         = f.submit value: "Send", class: "form-box__button"
