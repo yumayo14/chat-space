@@ -1,0 +1,15 @@
+.left-contents
+  .user
+    %p.user__name name
+    .user__icon
+      .user__icon__mark
+        = link_to new_group_path do
+          %i.fa.fa-edit
+      .user__icon__mark
+        = link_to edit_user_registration_path do
+          %i.fa.fa-cog
+  - @groups.each do |group|
+    .group
+      %p.group__name= group.name
+      %p.group__info よろしくお願いします
+
