@@ -5,8 +5,8 @@
 |------|----|-------|
 |text|text|なし|
 |image|string |なし|
-|user_id|references|foreign_key: true|
-|group_id |references|foreign_key: true|
+|user|references|foreign_key: true|
+|group |references|foreign_key: true|
 
 
 ### Association
@@ -32,8 +32,8 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|references|foreign_key: true|
-|group_id|references|foreign_key: true|
+|user|references|foreign_key: true|
+|group|references|foreign_key: true|
 
 ### Association
 - belongs_to :group
