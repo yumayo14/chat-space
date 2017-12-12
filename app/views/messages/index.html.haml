@@ -1,39 +1,26 @@
 .left-contents
-  .user
-    %p.user__name name
-    .user__icon
-      .user__icon__mark
-        = link_to new_group_path do
-          %i.fa.fa-edit
-      .user__icon__mark
-        = link_to edit_user_registration_path do
-          %i.fa.fa-cog
-  .group
-    %p.group__name Oh yeah!!
-    %p.group__info よろしくお願いします
-  .group
-    %p.group__name an an
-    %p.group__info よろしくお願いします
-
+  = render template: "groups/index",  collection: @groups, as: :group
 .right-contents
   .main-group
-    %h3.main-group__name sampleグループ
-    %h3.main-group__member Members: ryousuke maehira
+    %h3.main-group__name= @group.name
+    %h3.main-group__member
+      Members :
+      - @group.users.each do |user|
+        = user.name
     = link_to root_path do
       .main-group__edit Edit
   .chatspace
     .chatspace-content
-      .chatspace-content__member ryousukemaehira
-      .chatspace-content__post-time 2016/10/02 06:27:07
-      .chatspace-content__chat なるほど
-    .chatspace-content
-      .chatspace-content__member ryousukemaehira
-      .chatspace-content__post-time 2016/10/02 06:27:07
-      .chatspace-content__chat なるほど
-    %footer.form-box
-      = form_for ( [@group, @message] ), url: {action: :create} do |f|
-        = f.text_field :text, class: "form-box__text-field", placeholder: "Type a text"
-        %label.form-box__picture-set
-          = f.file_field :image, class: "form-box__picture-set__field"
-          %i.fa.fa-file-picture-o.fa-fw
-        = f.submit value: "Send", class: "form-box__button"
+      .chatspace-content
+        - @messages.each do |message|
+          .chatspace-content__member= message.user.name
+          .chatspace-content__post-time= message.created_at
+          .chatspace-content__chat= message.text
+          .chatspace-content__chat= image_tag message.image.to_s
+      %footer.form-box
+        = form_for ( [@group, @message] ) do |f|
+          = f.text_field :text, class: "form-box__text-field", placeholder: "Type a text"
+          %label.form-box__picture-set
+            = f.file_field :image, class: "form-box__picture-set__field"
+            %i.fa.fa-file-picture-o.fa-fw
+          = f.submit value: "Send", class: "form-box__button"
