@@ -3,17 +3,16 @@
   width: 300px;
   height: 100vh;
   background-color: #2f3e51;
-  padding-top: 20px;
   .user {
     @include left-side-position(25px, 20px, 15px);
     height: 15%;
     background-color: #253141;
     box-sizing: border-box;
     &__name {
-      color: $text;
       font-size: ($base_font + 4px);
       font-weight: bold;
-      float: left
+      float: left;
+      color: $text;
     }
     &__icon {
         left: 155px;
@@ -34,11 +33,18 @@
     @include left-side-position(5px, 0, 5px,);
     color: $text;
     font-size: ($base_font - 1);
+    a{
+    color: $text;
+    text-decoration: none;
+    }
+    a:visited {
+    color: $text;
+    }
     }
     &__info {
       @include left-side-position(5px, 5px, 5px,);
-      color: $text;
       font-size: ($base_font - 5);
+      color: $text;
     }
   }
 }
