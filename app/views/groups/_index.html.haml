@@ -1,0 +1,11 @@
+.group
+  .group_link
+  %p.group__name= link_to group.name, group_messages_path(group)
+  %p.group__info
+    - if group.messages.present?
+      - if group.messages.last.text.empty?
+        = "画像が投稿されています"
+      - else
+        = group.messages.last.text
+    - else
+      = "まだメッセージはありません"
