@@ -17,8 +17,8 @@ describe 'メッセージの投稿' do
       it "メッセージも画像も無いと保存できない" do
         message= FactoryGirl.build(:message, text: "", image: "")
         message.valid?
-        expect(message.errors[:text]).to include("can't be blank")
-        expect(message.errors[:image]).to include("can't be blank")
+        expect(message.errors[:text]).not_to include("blank")
+        expect(message.errors[:image]).not_to include("blank")
       end
       before Group do
         group = FactoryGirl.build(:group, id: "")
@@ -26,7 +26,7 @@ describe 'メッセージの投稿' do
       it "group_idが空だと保存されない" do
         message = FactoryGirl.build(:group)
         message.valid?
-        expect(message.errors[:group]).to include("can't be blank")
+        expect(message.errors[:group]).not_to include("blank")
       end
       before User do
         user = FactoryGirl.build(:user, id: "")
@@ -34,7 +34,7 @@ describe 'メッセージの投稿' do
       it "group_idが空だと保存されない" do
         message = FactoryGirl.build(:user)
         message.valid?
-        expect(message.errors[:user]).to include("can't be blank")
+        expect(message.errors[:user]).not_to include("blank")
       end
     end
   end
