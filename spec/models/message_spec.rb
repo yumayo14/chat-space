@@ -3,38 +3,31 @@ describe 'メッセージの投稿' do
   describe Message do
     describe '#create' do
       it "メッセージと画像がある場合は保存できる" do
-        message = FactoryGirl.build(:message)
+        message = build(:message)
         expect(message).to be_valid
       end
       it "メッセージがある場合は保存できる" do
-        message = FactoryGirl.build(:message, image: "")
+        message = build(:message, image: "")
         expect(message).to be_valid
       end
       it "画像がある場合は保存できる" do
-        message = FactoryGirl.build(:message, text: "")
+        message = build(:message, text: "")
         expect(message).to be_valid
       end
       it "メッセージも画像も無いと保存できない" do
-        message= FactoryGirl.build(:message, text: "", image: "")
+        message= build(:message, text: "", image: "")
         message.valid?
-        expect(message.errors[:text]).not_to include("blank")
-        expect(message.errors[:image]).not_to include("blank")
-      end
-      before Group do
-        group = FactoryGirl.build(:group, id: "")
+        expect(message.errors[:text_or_image]).to include "を入力してください"
       end
       it "group_idが空だと保存されない" do
-        message = FactoryGirl.build(:group)
+        message = build(:message, group_id: "")
         message.valid?
-        expect(message.errors[:group]).not_to include("blank")
+        expect(message.errors[:group]).to include "を入力してください"
       end
-      before User do
-        user = FactoryGirl.build(:user, id: "")
-      end
-      it "group_idが空だと保存されない" do
-        message = FactoryGirl.build(:user)
+      it "user_idが空だと保存されない" do
+        message = build(:message, user_id: "")
         message.valid?
-        expect(message.errors[:user]).not_to include("blank")
+        expect(message.errors[:user]).to include "を入力してください"
       end
     end
   end
