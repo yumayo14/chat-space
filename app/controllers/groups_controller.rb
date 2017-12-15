@@ -2,8 +2,13 @@ class GroupsController < ApplicationController
   before_action :set_group, only: [:edit, :update]
 
   def index
-    @groups = current_user.groups
-
+    @name =
+    if user_signed_in?
+      current_user.name
+    else
+      "name"
+    end
+    @groups = current_user.groups if user_signed_in?
   end
 
   def new
