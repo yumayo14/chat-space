@@ -7,21 +7,19 @@ describe MessagesController, type: :controller do
     context "ユーザーがログインしている場合" do
       before do
         login_user user
+        get :index, params: { group_id: group.id }
       end
       it "ログインしている場合、indexページに正しく遷移できているかどうか" do
-        get :index, group_id: group.id
         expect(response).to render_template :index
       end
 
       it "ユーザーが現在所属しているグループの情報をアクションに渡せているかどうか" do
-        get :index, params: { group_id: group.id }
         groups = user.groups
         expect(assigns(:groups)).to eq groups
       end
 
       it "ユーザーが所属しているグループのメッセージのみを表示できるかどうか" do
         messages = create_list(:message, 3, group_id: group.id, user_id: user.id)
-        get :index, params: { group_id: group.id }
         expect(assigns(:messages)).to match(messages)
       end
     end
