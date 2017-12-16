@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'spec_helper'
 describe 'メッセージの投稿' do
   describe Message do
     describe '#create' do
