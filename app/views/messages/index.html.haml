@@ -18,7 +18,7 @@
           .chatspace-content__chat= message.text
           .chatspace-content__chat= image_tag message.image.to_s
       %footer.form-box
-        = form_for ( [@group, @message] ) do |f|
+        = form_for ( [@group, @message] ), html: { id: "new_message" } do |f|
           = f.text_field :text, class: "form-box__text-field", placeholder: "Type a text"
           %label.form-box__picture-set
             = f.file_field :image, class: "form-box__picture-set__field"
