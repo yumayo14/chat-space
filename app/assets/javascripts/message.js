@@ -7,12 +7,15 @@ $(function() {
                   <div class= chatspace-content__chat> ${message.text} </div>
 `
 
-    if(message.image.url){
-      html += `<div class= chatspace-content__chat> <img src= "${message.image.url}"></div> </div>`
-    } else {
-      html += `</div>`
-    }
-  return html;
+    html =+
+    (message.image.url) ?
+      (
+        `<div class= chatspace-content__chat> <img src= "${message.image.url}"></div> </div>`
+      ):
+      (
+        `</div>`
+      );
+    return html;
   }
 
   $(".new_message").on("submit", function(e) {
@@ -33,12 +36,10 @@ $(function() {
       $('.chatspace').append(html);
       $('.form-box__text-field').val('');
       $('.chatspace').animate({scrollTop: $('.chatspace')[0].scrollHeight}, 'slow');
-
     })
     .fail(function() {
       alert('error');
     })
     return false;
-
   })
 })
