@@ -1,19 +1,16 @@
 $(function() {
   function buildHTML(message) {
 
-    if(message.image.url){
     var html = `<div class= chatspace-content>
                   <div class= chatspace-content__member> ${message.name} </div>
                   <div class= chatspace-content__post-time> ${message.created_at}</div>
                   <div class= chatspace-content__chat> ${message.text} </div>
-                  <div class= chatspace-content__chat> <img src= "${message.image.url}"></div>
-                </div>`
+`
+
+    if(message.image.url){
+      html += `<div class= chatspace-content__chat> <img src= "${message.image.url}"></div> </div>`
     } else {
-    var html = `<div class= chatspace-content>
-                  <div class= chatspace-content__member> ${message.name} </div>
-                  <div class= chatspace-content__post-time> ${message.created_at} </div>
-                  <div class= chatspace-content__chat> ${message.text} </div>
-                </div>`
+      html += `</div>`
     }
   return html;
   }
