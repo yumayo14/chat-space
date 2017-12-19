@@ -10,17 +10,22 @@
     = link_to root_path do
       .main-group__edit Edit
   .chatspace
-    .chatspace-content
+    - @messages.each do |message|
       .chatspace-content
-        - @messages.each do |message|
-          .chatspace-content__member= message.user.name
-          .chatspace-content__post-time= message.created_at
-          .chatspace-content__chat= message.text
-          .chatspace-content__chat= image_tag message.image.to_s
-      %footer.form-box
-        = form_for ( [@group, @message] ) do |f|
-          = f.text_field :text, class: "form-box__text-field", placeholder: "Type a text"
-          %label.form-box__picture-set
-            = f.file_field :image, class: "form-box__picture-set__field"
-            %i.fa.fa-file-picture-o.fa-fw
-          = f.submit value: "Send", class: "form-box__button"
+        .chatspace-content__member= message.user.name
+        .chatspace-content__post-time= message.created_at
+        - if message.image.present?
+          .chatspace-content__chat
+            = message.text
+          .chatspace-content__chat
+            = image_tag message.image
+        - else
+          .chatspace-content__chat
+            = message.text
+  %footer.form-box
+    = form_for [@group, @message], remote: true do |f|
+      = f.text_field :text, class: "form-box__text-field", placeholder: "Type a text"
+      %label.form-box__picture-set
+        = f.file_field :image, class: "form-box__picture-set__field"
+        %i.fa.fa-file-picture-o.fa-fw
+      = f.submit value: "Send", class: "form-box__button"
