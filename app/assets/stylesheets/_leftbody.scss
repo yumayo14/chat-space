@@ -5,7 +5,7 @@
   background-color: #2f3e51;
   .user {
     @include left-side-position(25px, 20px, 15px);
-    height: 15%;
+    height: 100px;
     background-color: #253141;
     box-sizing: border-box;
     &__name {
@@ -15,7 +15,7 @@
       color: $text;
     }
     &__icon {
-        left: 155px;
+        left: 100px;
         position: relative;
         &__mark{
           float: left;

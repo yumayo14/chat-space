@@ -1,10 +1,9 @@
 .right-contents {
-  padding-top: 20px;
   float: left;
   width: $right-width;
   height: 100vh;
   .main-group {
-    height: 15%;
+    height: 100px;
     box-sizing: border-box;
     border-bottom:1px solid #DDDDDD;
     @include right-side-position(35px,40px, 0, 40px);
@@ -27,10 +26,12 @@
       }
   }
   .chatspace{
-    height: 85%;
-    width: 100vh;
+    height: calc( 100vh - 190px );
+    width: 100%;
     box-sizing: border-box;
+    overflow: scroll;
     .chatspace-content{
+      width: 100%;
       @include right-side-position(46px, 40px, 15px, 40px);
       &__member {
         @include black-font(16px);
@@ -49,7 +50,44 @@
       }
     }
   }
+  .form-box {
+    width:$right-width;
+    height: 90px;
+    bottom: 0;
+    position: absolute;
+    background-color: #DDDDDD;
+    form {
+    clear: both;
+    @include form-position(20px, 20px, 20px, 20px);
+    }
+    &__text-field {
+      height: 50px;
+      width: 81%;
+      float: left;
+    }
+    &__picture-set {
+      background-color: #FFFFFF;
+      height: 52px;
+      width: 50px;
+      float: left;
+      margin-top: 1px;
+        &__field {
+        display:none;
+        }
+        .fa-fw {
+          margin: 12px auto;
+          width: 3em;
+          font-size: 20px;
+        }
+    }
+    &__button {
+      @extend .button;
+      background-color: $light-blue;
+      color: $white;
+      float: left;
+      bottom: 0;
+    }
+  }
 }
-
 
 

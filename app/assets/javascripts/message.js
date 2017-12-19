@@ -1,17 +1,24 @@
 $(function() {
   function buildHTML(message) {
-    console.log(message);
-    var html = `<div class= chatspace-content__member> ${message.name} </div>
-                <div class= chatspace-content__post-time> ${message.created_at}</div>
-                <div class= chatspace-content__chat> ${message.text} </div>`
 
     if(message.image.url){
-      html += `<div class= chatspace-content__chat> <img src= "${message.image.url}"></div>`
+    var html = `<div class= chatspace-content>
+                  <div class= chatspace-content__member> ${message.name} </div>
+                  <div class= chatspace-content__post-time> ${message.created_at}</div>
+                  <div class= chatspace-content__chat> ${message.text} </div>
+                  <div class= chatspace-content__chat> <img src= "${message.image.url}"></div>
+                </div>`
+    } else {
+    var html = `<div class= chatspace-content>
+                  <div class= chatspace-content__member> ${message.name} </div>
+                  <div class= chatspace-content__post-time> ${message.created_at} </div>
+                  <div class= chatspace-content__chat> ${message.text} </div>
+                </div>`
     }
-    return html;
+  return html;
   }
 
-  $("#new_message").on("submit", function(e) {
+  $(".new_message").on("submit", function(e) {
     e.preventDefault();
     var formData = new FormData(this);
     var href = $(this).attr('action');
@@ -26,9 +33,10 @@ $(function() {
     })
     .done(function(data) {
       var html = buildHTML(data)
-      console.log(data)
-      $('.chatspace-content').append(html);
+      $('.chatspace').append(html);
       $('.form-box__text-field').val('');
+      $('.chatspace').animate({scrollTop: $('.chatspace')[0].scrollHeight}, 'slow');
+
     })
     .fail(function() {
       alert('error');
