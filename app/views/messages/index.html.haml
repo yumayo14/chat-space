@@ -7,7 +7,7 @@
       Members :
       - @group.users.each do |user|
         = user.name
-    = link_to root_path do
+    = link_to edit_group_path(@group) do
       .main-group__edit Edit
   .chatspace
     - @messages.each do |message|
