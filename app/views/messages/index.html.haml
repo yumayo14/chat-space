@@ -11,7 +11,7 @@
       .main-group__edit Edit
   .chatspace
     - @messages.each do |message|
-      .chatspace-content
+      .chatspace-content{ "data-message-id": "#{message.id}" }
         .chatspace-content__member= message.user.name
         .chatspace-content__post-time= message.created_at
         - if message.image.present?
