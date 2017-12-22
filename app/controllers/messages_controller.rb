@@ -5,7 +5,11 @@ class MessagesController < ApplicationController
   def index
     @name = current_user.name
     @groups = current_user.groups
-    @messages = @group.messages
+    @messages = @group.messages.includes(:user)
+      respond_to do |format|
+        format.json
+        format.html
+      end
     @message = current_user.messages.new
   end
 
@@ -16,7 +20,6 @@ class MessagesController < ApplicationController
     @message = current_user.messages.new(message_params)
     if @message.save
       respond_to do |format|
-        format.html
         format.json
       end
     else
