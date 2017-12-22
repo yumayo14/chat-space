@@ -1,10 +1,12 @@
 $(function() {
   function buildHTML(message) {
     var insertImage = '';
-    if (message.image.url) {
-      insertImage = `<div class= chatspace-content__chat>
-              ${message.image}</div>`;
-    }
+      insertImage =
+      (message.image_url)?
+      (
+        `<div class= chatspace-content__chat>
+              ${message.image}</div>`
+      ):(``);
 
     var html = `
       <div class= chatspace-content data-message-id=${message.id}>
@@ -25,7 +27,6 @@ $(function() {
     })
     .done(function(messages) {
       var last_message_id = $('.chatspace-content:last').data("message-id");
-      console.log(last_message_id)
       var insertHTML = '';
       messages.forEach(function(message) {
          if (message.id > last_message_id ) {
@@ -33,7 +34,6 @@ $(function() {
           $('.chatspace').append(insertHTML);
         }
       });
-      console.log("reloaded")
     })
     .fail(function(data) {
       alert('自動更新に失敗しました');
