@@ -21,7 +21,7 @@
         background-color: $white;
         color: $light-blue;
         border:solid$light-blue;
-        position: absolute;
+        right: 40px;
         top: 30px;
       }
   }
@@ -62,7 +62,7 @@
     }
     &__text-field {
       height: 50px;
-      width: 81%;
+      width:calc(100% - 150px);
       float: left;
     }
     &__picture-set {
