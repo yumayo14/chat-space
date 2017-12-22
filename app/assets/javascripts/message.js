@@ -42,4 +42,29 @@ $(function() {
     })
     return false;
   })
+
+  var auto_reload = setInterval(function() {
+  if (window.location.href.match(/\/groups\/\d+\/messages/)) {
+    $.ajax({
+      url: location.href,
+      type: 'GET',
+      dataType: "json"
+    })
+    .done(function(messages) {
+      var last_message_id = $('.chatspace-content:last').data("message-id");
+      messages.forEach(function(message) {
+         if (message.id > last_message_id ) {
+          var html = buildHTML(message)
+          $('.chatspace').append(html);
+        }
+      });
+    })
+    .fail(function(data) {
+      alert('自動更新に失敗しました');
+    });
+      } else {
+      clearInterval(auto_reload);
+    }
+  }, 5000 );
 })
+
